@@ -1,0 +1,33 @@
+descriptor-schema-version: "2.4"
+
+info:
+  name: pfSense 
+  description: "Virtual firewall on IOx"
+  version: "1.0"
+  author-link: "http://www.cisco.com"
+  author-name: "Cisco Systems"
+
+app:
+  type: vm
+  cpuarch: x86_64
+  resources:
+    profile: custom
+    cpu: 7400
+    memory: 2048
+    vcpu: 2
+    disk: 20000
+
+    network:
+      -
+        interface-name: eth0
+      -
+        interface-name: eth1
+
+  # Specify runtime and startup
+  startup:
+    disks:
+      -
+        target-dev: "hdc"
+        file: "<mymachine>.qcow2"
+
+    qemu-guest-agent: True

@@ -1,0 +1,13 @@
+interface AppGigabitEthernet1/0/1
+ switchport trunk allowed vlan 2,3
+ switchport mode trunk
+end
+alias exec pfsense app-hosting connect appid <mymachine> console
+app-hosting appid <mymachine>
+ app-vnic AppGigabitEthernet trunk
+  vlan 2 guest-interface 0
+  vlan 3 guest-interface 1
+ app-resource profile custom
+  cpu 7400
+  memory 2048
+  vcpu 2
